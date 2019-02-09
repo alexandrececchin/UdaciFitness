@@ -1,4 +1,4 @@
-import react from 'react';
+import React, { Component } from 'react';
 import { View } from 'react-native';
 import { FontAwesome, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { white } from './colors';
@@ -55,9 +55,9 @@ export function getMetricMetaInfo(metric) {
       type: 'steppers',
       getIcon() {
         return (
-          <view>
+          <View>
             <MaterialIcons name="directions-run" color={'black'} size={35} />
-          </view>
+          </View>
         );
       }
     },
@@ -69,9 +69,9 @@ export function getMetricMetaInfo(metric) {
       type: 'steppers',
       getIcon() {
         return (
-          <view>
-            <MaterialCommunityIcons name="Bike" color={'black'} size={35} />
-          </view>
+          <View>
+            <MaterialCommunityIcons name="bike" color={'black'} size={35} />
+          </View>
         );
       }
     },
@@ -83,9 +83,9 @@ export function getMetricMetaInfo(metric) {
       type: 'steppers',
       getIcon() {
         return (
-          <view>
-            <MaterialCommunityIcons name="swin" color={'black'} size={35} />
-          </view>
+          <View>
+            <MaterialCommunityIcons name="pool" color={'black'} size={35} />
+          </View>
         );
       }
     },
@@ -97,9 +97,9 @@ export function getMetricMetaInfo(metric) {
       type: 'slider',
       getIcon() {
         return (
-          <view>
+          <View>
             <MaterialCommunityIcons name="sleep" color={'black'} size={35} />
-          </view>
+          </View>
         );
       }
     },
@@ -111,13 +111,13 @@ export function getMetricMetaInfo(metric) {
       type: 'slider',
       getIcon() {
         return (
-          <view>
+          <View>
             <MaterialCommunityIcons name="food" color={'black'} size={35} />
-          </view>
+          </View>
         );
       }
     }
   };
 
-  return metric === undefined ? info : info[metric];
+  return typeof metric === 'undefined' ? info : info[metric];
 }
