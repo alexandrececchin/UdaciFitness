@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { getMetricMetaInfo, timeToString } from '../utils/helpers';
 import UdaciSliders from './UdaciSliders';
 import UdaciSteppers from './UdaciSteppers';
+import { Ionicons } from '@expo/vector-icons';
+import TextButton from './TextButton';
 
 function SubmitBtn({ onPress }) {
   return (
@@ -58,8 +60,23 @@ class AddEntry extends Component {
     });
   };
 
+  reset = () => {
+    const key = timeToString();
+  };
+
   render() {
     const metaInfo = getMetricMetaInfo();
+
+    if (this.props.alreadyLogged) {
+      return (
+        <View>
+          <Ionicons name={'ios-happy'} size={100} />
+          <Text>You already logged your information for today</Text>
+          <TextButton onPress={this.reset}>Reset</TextButton>
+        </View>
+      );
+    }
+
     return (
       <View>
         {Object.keys(metaInfo).map(key => {
