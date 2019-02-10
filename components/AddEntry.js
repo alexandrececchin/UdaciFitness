@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { getMetricMetaInfo, timeToString } from '../utils/helpers';
 import UdaciSliders from './UdaciSliders';
 import UdaciSteppers from './UdaciSteppers';
+import { submitEntry, removeEntry } from './api';
 import { Ionicons } from '@expo/vector-icons';
 import TextButton from './TextButton';
 
@@ -58,10 +59,13 @@ class AddEntry extends Component {
       sleep: 0,
       eat: 0
     });
+
+    submitEntry({ key, entry });
   };
 
   reset = () => {
     const key = timeToString();
+    removeEntry(key);
   };
 
   render() {
