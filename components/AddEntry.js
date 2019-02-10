@@ -14,11 +14,11 @@ function SubmitBtn({ onPress }) {
 
 class AddEntry extends Component {
   state = {
-    run: 10,
+    run: 0,
     bike: 0,
     swin: 0,
-    sleep: 20,
-    food: 0
+    sleep: 0,
+    eat: 0
   };
 
   increment = metric => {
@@ -54,7 +54,7 @@ class AddEntry extends Component {
       bike: 0,
       swin: 0,
       sleep: 0,
-      food: 0
+      eat: 0
     });
   };
 

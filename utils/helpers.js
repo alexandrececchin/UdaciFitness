@@ -93,7 +93,7 @@ export function getMetricMetaInfo(metric) {
       displayName: 'Sleep',
       max: 24,
       unit: 'hours',
-      step: 100,
+      step: 1,
       type: 'slider',
       getIcon() {
         return (
@@ -107,7 +107,7 @@ export function getMetricMetaInfo(metric) {
       displayName: 'Eat',
       max: 10,
       unit: 'hours',
-      step: 100,
+      step: 1,
       type: 'slider',
       getIcon() {
         return (
