@@ -4,7 +4,8 @@ import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils
 import { purple, white } from '../utils/colors';
 import UdaciSliders from './UdaciSliders';
 import UdaciSteppers from './UdaciSteppers';
-import { submitEntry, removeEntry } from './api';
+
+import { submitEntry, removeEntry } from '../utils/api';
 import { Ionicons } from '@expo/vector-icons';
 import TextButton from './TextButton';
 import { connect } from 'react-redux';
@@ -25,7 +26,7 @@ class AddEntry extends Component {
   state = {
     run: 0,
     bike: 0,
-    swin: 0,
+    swim: 0,
     sleep: 0,
     eat: 0
   };
@@ -68,7 +69,7 @@ class AddEntry extends Component {
     this.setState({
       run: 0,
       bike: 0,
-      swin: 0,
+      swim: 0,
       sleep: 0,
       eat: 0
     });
@@ -92,7 +93,7 @@ class AddEntry extends Component {
     if (this.props.alreadyLogged) {
       return (
         <View style={styles.center}>
-          <Ionicons name={Platform.OS === 'ios' ? 'ios-happy' : 'md-happy'} size={100} />
+          <Ionicons name={Platform.OS === 'ios' ?'ios-happy' : 'md-happy'} size={100} />
           <Text>You already logged your information for today</Text>
           <TextButton style={{ padding: 10 }} onPress={this.reset}>
             Reset
