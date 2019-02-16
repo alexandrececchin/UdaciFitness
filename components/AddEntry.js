@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Platform, StyleSheet } from 'react-native';
-import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers';
+import {
+  getMetricMetaInfo,
+  timeToString,
+  getDailyReminderValue,
+  clearLocalNotification,
+  setLocalNotification
+} from '../utils/helpers';
 import { purple, white } from '../utils/colors';
 import UdaciSliders from './UdaciSliders';
 import UdaciSteppers from './UdaciSteppers';
@@ -75,7 +81,9 @@ class AddEntry extends Component {
     });
 
     submitEntry({ key, entry });
-    this.toHome()
+    clearLocalNotification().then(setLocalNotification());
+
+    this.toHome();
   };
 
   reset = () => {
@@ -86,11 +94,11 @@ class AddEntry extends Component {
       })
     );
     removeEntry(key);
-    this.toHome()
+    this.toHome();
   };
 
   toHome = () => {
-    this.props.navigation.dispatch(NavigationActions.back({key: 'AddEntry' }));
+    this.props.navigation.dispatch(NavigationActions.back({ key: 'AddEntry' }));
   };
 
   render() {
