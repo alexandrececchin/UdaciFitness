@@ -11,6 +11,7 @@ export default function UdaciSlider({ max, unit, step, value, onChange }) {
         maximumValue={max}
         minimumValue={0}
         onValueChange={onChange}
+        style={{flex: 2}}
       />
       <View style={styles.metricCounter}>
         <Text style={{ fontSize: 24, textAlign: 'center' }}>{value}</Text>
