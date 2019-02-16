@@ -4,7 +4,7 @@ import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils
 import { purple, white } from '../utils/colors';
 import UdaciSliders from './UdaciSliders';
 import UdaciSteppers from './UdaciSteppers';
-
+import { NavigationActions } from 'react-navigation';
 import { submitEntry, removeEntry } from '../utils/api';
 import { Ionicons } from '@expo/vector-icons';
 import TextButton from './TextButton';
@@ -75,6 +75,7 @@ class AddEntry extends Component {
     });
 
     submitEntry({ key, entry });
+    this.toHome()
   };
 
   reset = () => {
@@ -85,6 +86,11 @@ class AddEntry extends Component {
       })
     );
     removeEntry(key);
+    this.toHome()
+  };
+
+  toHome = () => {
+    this.props.navigation.dispatch(NavigationActions.back({key: 'AddEntry' }));
   };
 
   render() {
@@ -93,7 +99,7 @@ class AddEntry extends Component {
     if (this.props.alreadyLogged) {
       return (
         <View style={styles.center}>
-          <Ionicons name={Platform.OS === 'ios' ?'ios-happy' : 'md-happy'} size={100} />
+          <Ionicons name={Platform.OS === 'ios' ? 'ios-happy' : 'md-happy'} size={100} />
           <Text>You already logged your information for today</Text>
           <TextButton style={{ padding: 10 }} onPress={this.reset}>
             Reset
