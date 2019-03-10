@@ -29,13 +29,16 @@ function SubmitBtn({ onPress }) {
 }
 
 class AddEntry extends Component {
-  state = {
-    run: 0,
-    bike: 0,
-    swim: 0,
-    sleep: 0,
-    eat: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      run: 0,
+      bike: 0,
+      swim: 0,
+      sleep: 0,
+      eat: 0
+    };
+  }
 
   increment = metric => {
     const { max, step } = getMetricMetaInfo(metric);

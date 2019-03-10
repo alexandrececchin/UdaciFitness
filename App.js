@@ -73,7 +73,7 @@ const Tabs = createAppContainer(TabsNav);
 
 export default class App extends React.Component {
   componentDidMount() {
-      setLocalNotification()
+    setLocalNotification();
   }
 
   render() {
