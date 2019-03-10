@@ -1,12 +1,17 @@
 import React from 'react';
 import { View, Platform, StatusBar } from 'react-native';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import {
+  createBottomTabNavigator,
+  createAppContainer,
+  createStackNavigator
+} from 'react-navigation';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
 import AddEntry from './components/AddEntry';
 import History from './components/History';
 import Live from './components/Live';
+import EntryDetail from './components/EntryDetail';
 import { purple, white } from './utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { Constants } from 'expo';
@@ -71,6 +76,23 @@ const TabsNav = createBottomTabNavigator(
 
 const Tabs = createAppContainer(TabsNav);
 
+const MainNavigator = createAppContainer(
+  createStackNavigator({
+    Home: {
+      screen: Tabs
+    },
+    EntryDetail: {
+      screen: EntryDetail,
+      navigationOptions: {
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: purple
+        }
+      }
+    }
+  })
+);
+
 export default class App extends React.Component {
   componentDidMount() {
     setLocalNotification();
@@ -81,7 +103,7 @@ export default class App extends React.Component {
       <Provider store={createStore(reducer)}>
         <View style={{ flex: 1 }}>
           <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
-          <Tabs />
+          <MainNavigator />
         </View>
       </Provider>
     );
