@@ -59,7 +59,7 @@ const TabsNav = createBottomTabNavigator(
     },
     tabBarOptions: {
       activeTintColor: Platform.OS === 'ios' ? purple : white,
-      styel: {
+      style: {
         height: 56,
         backgroundColor: Platform.OS === 'ios' ? white : purple,
         shadowColor: 'rgba(0, 0, 0, 0.24)',
